@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一份假Offer · "培训贷"如何精准猎杀应届生｜深度调查</title>
+<!-- 字体预连接：加速镜像节点握手 -->
+<link rel="preconnect" href="https://fonts.loli.net" crossorigin>
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin>
+<!-- Google Fonts 国内镜像（loli.net），GitHub Pages 可访问 -->
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+
+:root {
+  --red: #C9171E;
+  --red2: #E8222A;
+  --red-dim: rgba(201,23,30,0.12);
+  --ink: #111009;
+  --ink2: #2E2B26;
+  --ink3: #5C5850;
+  --cream: #F7F4EE;
+  --warm: #EDE9DF;
+  --white: #FDFCFA;
+  --gold: #B8973A;
+  --border: #D4CEBF;
+  --serif: 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif', 'STSong', 'SimSun', serif;
+  --sans: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 32px;height:48px;
+  background:rgba(17,16,9,0.96);backdrop-filter:blur(12px);
+}
+.nav-logo{font-family:var(--serif);font-size:13px;font-weight:700;color:var(--red);letter-spacing:1px}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{font-size:11px;color:rgba(255,255,255,0.45);text-decoration:none;letter-spacing:0.8px;transition:color .2s}
+.nav-links a:hover{color:rgba(255,255,255,0.9)}
+#read-bar{position:fixed;top:48px;left:0;z-index:998;height:2px;background:var(--red);width:0;transition:width .08s linear}
+
+/* ═══════════════════════════════════════
+   COVER — FULL BLEED CINEMATIC
+═══════════════════════════════════════ */
+#cover{
+  min-height:100vh;background:var(--ink);
+  display:grid;grid-template-rows:1fr auto;
+  position:relative;overflow:hidden;padding-top:48px;
+}
+.cover-noise{
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:.6;pointer-events:none;
+}
+.cover-grid-lines{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;
+}
+.cover-red-slash{
+  position:absolute;top:0;right:0;width:40vw;height:100%;
+  background:linear-gradient(135deg,transparent 40%,rgba(201,23,30,0.07) 100%);
+  pointer-events:none;
+}
+.cover-body{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 60px 40px;max-width:1100px;margin:0 auto;width:100%;
+  position:relative;z-index:2;
+}
+.cover-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:10px;font-weight:700;letter-spacing:3px;color:var(--red);
+  text-transform:uppercase;margin-bottom:32px;
+}
+.cover-eyebrow::before{content:'';width:24px;height:1.5px;background:var(--red)}
+.cover-h1{
+  font-family:var(--serif);font-weight:900;line-height:0.95;
+  font-size:clamp(64px,11vw,140px);color:#FAFAF8;
+  margin-bottom:0;letter-spacing:-3px;
+}
+.cover-h1 .slash{color:var(--red)}
+.cover-title-rule{
+  width:60px;height:3px;background:var(--red);
+  margin:28px 0 24px;
+}
+.cover-sub{
+  font-family:var(--serif);font-size:clamp(14px,1.6vw,18px);
+  color:rgba(250,250,248,0.5);line-height:1.8;
+  max-width:500px;margin:0;font-weight:300;
+}
+.cover-sub em{color:rgba(250,250,248,0.9);font-style:normal;font-weight:600}
+
+.cover-stats-bar{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid rgba(255,255,255,0.08);
+  position:relative;z-index:2;
+}
+.cs-item{
+  padding:28px 32px;border-right:1px solid rgba(255,255,255,0.06);
+  display:flex;flex-direction:column;gap:6px;
+  transition:background .3s;cursor:default;
+}
+.cs-item:last-child{border-right:none}
+.cs-item:hover{background:rgba(255,255,255,0.03)}
+.cs-num{
+  font-family:var(--serif);font-size:clamp(36px,5vw,58px);
+  font-weight:900;color:var(--red);line-height:1;
+}
+.cs-unit{font-size:16px;color:rgba(255,255,255,0.3);margin-left:4px;font-weight:300}
+.cs-label{font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:0.5px;line-height:1.5}
+.cover-scroll-hint{
+  position:absolute;bottom:32px;right:40px;z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.2);
+}
+.cover-scroll-hint::after{
+  content:'';width:1px;height:48px;
+  background:linear-gradient(to bottom,rgba(255,255,255,0.15),transparent);
+  animation:scrollpulse 2s ease infinite;
+}
+@keyframes scrollpulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:.7;transform:scaleY(1.1)}}
+
+/* ═══════════════════════════════════════
+   CHAPTER INTRO STRIPE
+═══════════════════════════════════════ */
+.chapter-stripe{
+  display:grid;grid-template-columns:200px 1fr;
+  max-width:1100px;margin:0 auto;
+  padding:80px 60px;gap:60px;align-items:start;
+}
+.cs-label-col{padding-top:6px}
+.cs-chapter-num{
+  font-family:var(--serif);font-size:80px;font-weight:900;
+  line-height:1;color:rgba(17,16,9,0.07);letter-spacing:-4px;
+  user-select:none;
+}
+.cs-chapter-tag{
+  font-size:10px;font-weight:700;letter-spacing:3px;
+  color:var(--red);text-transform:uppercase;margin-top:-8px;
+  display:block;
+}
+.cs-content-col{}
+.cs-title{
+  font-family:var(--serif);font-size:clamp(26px,4vw,40px);
+  font-weight:800;line-height:1.2;color:var(--ink);
+  margin-bottom:20px;
+}
+.cs-title span{color:var(--red)}
+.cs-lead{
+  font-family:var(--serif);font-size:clamp(16px,1.8vw,19px);
+  line-height:1.95;color:var(--ink2);
+}
+.cs-lead strong{color:var(--ink);font-weight:700}
+
+/* ═══════════════════════════════════════
+   PULL QUOTE — CINEMATIC
+═══════════════════════════════════════ */
+.pq-block{
+  background:var(--ink);padding:64px 60px;
+  position:relative;overflow:hidden;margin:0;
+}
+.pq-block::before{
+  content:'"';font-family:var(--serif);font-size:280px;font-weight:900;
+  color:rgba(201,23,30,0.08);position:absolute;top:-40px;left:32px;
+  line-height:1;pointer-events:none;
+}
+.pq-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.pq-text{
+  font-family:var(--serif);font-size:clamp(22px,3.5vw,38px);
+  font-weight:700;line-height:1.5;color:#FAFAF8;
+}
+.pq-text em{color:var(--red);font-style:normal}
+.pq-source{
+  font-size:12px;color:rgba(255,255,255,0.3);
+  margin-top:20px;letter-spacing:1px;
+}
+
+/* ═══════════════════════════════════════
+   INTRO BODY TEXT AREA
+═══════════════════════════════════════ */
+.body-area{max-width:720px;margin:0 auto;padding:0 60px}
+.body-area.wide{max-width:1100px;padding:0 60px}
+.body-p{
+  font-family:var(--serif);font-size:17px;line-height:2.05;
+  color:var(--ink2);margin-bottom:24px;
+}
+.body-p strong{color:var(--ink)}
+.callout-inset{
+  margin:32px 0;padding:20px 24px;
+  border-left:3px solid var(--red);
+  background:var(--red-dim);
+}
+.callout-inset p{
+  font-family:var(--serif);font-size:15px;line-height:1.9;color:var(--ink2)
+}
+.callout-inset p strong{color:var(--red)}
+
+/* ═══════════════════════════════════════
+   SECTION DIVIDER
+═══════════════════════════════════════ */
+.sec-rule{
+  border:none;border-top:1px solid var(--border);
+  max-width:1100px;margin:0 auto;
+}
+.sec-rule.thick{border-top:2px solid var(--ink);margin:0}
+
+/* ═══════════════════════════════════════
+   CASES — MAGAZINE LAYOUT
+═══════════════════════════════════════ */
+#sec-cases{background:var(--cream)}
+.cases-header{
+  padding:64px 60px 40px;max-width:1100px;margin:0 auto;
+  display:flex;align-items:baseline;justify-content:space-between;
+}
+.cases-hint{font-size:11px;color:var(--ink3);letter-spacing:0.5px}
+
+.cases-stack{max-width:1100px;margin:0 auto;padding:0 60px 80px}
+.case-row{
+  display:grid;grid-template-columns:80px 1fr;
+  border-top:1px solid var(--border);
+  cursor:pointer;transition:background .2s;
+  position:relative;
+}
+.case-row:last-child{border-bottom:1px solid var(--border)}
+.case-row:hover{background:rgba(201,23,30,0.03)}
+.case-row.open{background:rgba(201,23,30,0.04)}
+.case-row::after{
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:3px;background:var(--red);transform:scaleY(0);transform-origin:top;
+  transition:transform .25s ease;
+}
+.case-row.open::after,.case-row:hover::after{transform:scaleY(1)}
+.case-idx-col{
+  padding:28px 0;display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-start;gap:4px;
+  border-right:1px solid var(--border);
+}
+.case-idx-num{
+  font-family:var(--serif);font-size:11px;font-weight:700;
+  color:var(--red);letter-spacing:1px;writing-mode:vertical-rl;
+  text-orientation:mixed;transform:rotate(180deg);
+}
+.case-content-col{padding:28px 32px}
+.case-top-row{
+  display:grid;grid-template-columns:1fr auto;
+  gap:16px;align-items:start;margin-bottom:10px;
+}
+.case-title{
+  font-family:var(--serif);font-size:19px;font-weight:700;
+  color:var(--ink);line-height:1.3;
+}
+.case-amount{
+  font-family:var(--serif);font-size:22px;font-weight:900;
+  color:var(--red);white-space:nowrap;padding-top:2px;
+  flex-shrink:0;max-width:160px;word-break:keep-all;
+}
+.case-tags{
+  display:flex;gap:8px;flex-wrap:wrap;margin-bottom:0;
+}
+.case-tag{
+  font-size:10px;color:var(--ink3);background:rgba(0,0,0,0.05);
+  padding:3px 8px;letter-spacing:0.3px;
+}
+.case-toggle-hint{
+  font-size:11px;color:var(--gold);margin-top:8px;display:inline-block;
+  letter-spacing:0.5px;transition:color .2s;
+}
+.case-row:hover .case-toggle-hint{color:var(--red)}
+.case-body{
+  display:none;margin-top:20px;padding-top:20px;
+  border-top:1px dashed var(--border);
+}
+.case-row.open .case-body{display:block}
+.case-body p{
+  font-family:var(--serif);font-size:15.5px;line-height:1.95;
+  color:var(--ink2);margin-bottom:14px;
+}
+.case-body p strong{color:var(--ink)}
+.case-source{
+  font-size:11px;color:var(--ink3);margin-top:14px;
+  padding-top:10px;border-top:1px solid var(--border);
+}
+.case-source a{color:var(--gold);text-decoration:none}
+.case-source a:hover{text-decoration:underline}
+
+/* ═══════════════════════════════════════
+   DATA SECTION — DARK FULL BLEED
+═══════════════════════════════════════ */
+#sec-data{background:var(--ink);color:#FAFAF8;padding:80px 0}
+.data-inner{max-width:1100px;margin:0 auto;padding:0 60px}
+.data-section-head{margin-bottom:48px}
+.data-eyebrow{
+  font-size:10px;font-weight:700;letter-spacing:3px;
+  color:var(--red);text-transform:uppercase;margin-bottom:12px;display:block;
+}
+.data-title{
+  font-family:var(--serif);font-size:clamp(28px,4vw,44px);
+  font-weight:800;color:#FAFAF8;line-height:1.2;
+}
+.data-title span{color:var(--red)}
+.data-desc{
+  font-family:var(--serif);font-size:15px;line-height:1.85;
+  color:rgba(250,250,248,0.5);max-width:640px;margin-top:14px;
+  border-left:2px solid rgba(201,23,30,0.4);padding-left:14px;
+}
+.data-desc strong{color:rgba(250,250,248,0.8)}
+
+/* DATA METRICS GRID */
+.metrics-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.06);margin-bottom:56px;
+}
+.metric-card{
+  background:var(--ink);padding:28px 24px;
+  display:flex;flex-direction:column;gap:8px;
+  transition:background .25s;
+}
+.metric-card:hover{background:rgba(255,255,255,0.04)}
+.metric-card.accent{background:rgba(201,23,30,0.12)}
+.metric-card.accent:hover{background:rgba(201,23,30,0.18)}
+.metric-num{
+  font-family:var(--serif);font-size:clamp(32px,4vw,48px);
+  font-weight:900;color:var(--red);line-height:1;
+}
+.metric-num .unit{font-size:14px;color:rgba(255,255,255,0.3);font-weight:300;margin-left:4px}
+.metric-label{font-size:13px;font-weight:700;color:rgba(255,255,255,0.85);line-height:1.4}
+.metric-sub{font-size:11.5px;color:rgba(255,255,255,0.35);line-height:1.7;flex:1}
+.metric-src{font-size:10px;color:rgba(184,151,58,0.6);text-decoration:none;margin-top:4px;display:block}
+.metric-src:hover{color:var(--gold)}
+
+/* TIMELINE */
+.tl-wrap{border:1px solid rgba(255,255,255,0.08);margin-bottom:48px}
+.tl-nav{display:flex;border-bottom:1px solid rgba(255,255,255,0.08)}
+.tl-btn{
+  flex:1;padding:14px 8px;text-align:center;cursor:pointer;
+  font-family:var(--serif);font-size:13px;font-weight:700;color:rgba(255,255,255,0.3);
+  border:none;background:transparent;border-right:1px solid rgba(255,255,255,0.06);
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  transition:all .2s;
+}
+.tl-btn:last-child{border-right:none}
+.tl-btn small{font-size:9px;font-weight:400;opacity:.6}
+.tl-btn:hover{color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.04)}
+.tl-btn.active{background:var(--red);color:white}
+.tl-btn.active small{opacity:.75}
+.tl-panel{padding:28px 32px;min-height:120px}
+.tl-year-badge{
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  color:var(--red);margin-bottom:8px;display:block;
+}
+.tl-event-h{
+  font-family:var(--serif);font-size:17px;font-weight:700;
+  color:#FAFAF8;margin-bottom:10px;line-height:1.4;
+}
+.tl-event-p{font-size:13.5px;line-height:1.9;color:rgba(255,255,255,0.5)}
+.tl-src{font-size:11px;color:rgba(184,151,58,0.6);margin-top:12px;display:flex;align-items:center;gap:6px}
+.tl-src a{color:var(--gold);text-decoration:none}
+
+/* MAP */
+.map-wrap{display:flex;border:1px solid rgba(255,255,255,0.1);overflow:hidden}
+.map-svg-area{flex:1;position:relative;background:#EFEAD9}
+#cmap{width:100%;height:auto;display:block}
+.map-pin{cursor:pointer}
+.map-pin.hidden{opacity:0;pointer-events:none}
+.map-pin.visible{opacity:1;pointer-events:all;transition:opacity .4s}
+.pin-ripple{animation:pinpulse 2.5s ease infinite}
+@keyframes pinpulse{0%,100%{r:14;opacity:.15}50%{r:20;opacity:.05}}
+.pin-dot{transition:r .15s}
+.map-pin:hover .pin-dot{r:7}
+.map-popup{
+  position:absolute;z-index:20;background:#0D0C09;
+  border-top:2px solid var(--red);padding:18px 20px;width:240px;
+  display:none;box-shadow:0 12px 48px rgba(0,0,0,0.7);pointer-events:all;
+}
+.map-popup.show{display:block}
+.mpp-close{position:absolute;top:8px;right:12px;background:none;border:none;color:rgba(255,255,255,0.3);font-size:16px;cursor:pointer}
+.mpp-close:hover{color:white}
+.mpp-tag{font-size:9px;color:var(--red);letter-spacing:2px;margin-bottom:5px;font-weight:700}
+.mpp-name{font-family:var(--serif);font-size:15px;font-weight:700;color:white;margin-bottom:3px}
+.mpp-amt{font-family:var(--serif);font-size:20px;font-weight:900;color:#FF6B6B;margin-bottom:10px}
+.mpp-body{font-size:12px;line-height:1.8;color:rgba(255,255,255,0.55);border-top:1px solid rgba(255,255,255,0.08);padding-top:10px;margin-bottom:10px}
+.mpp-link{font-size:10px;color:var(--gold);text-decoration:none}
+.mpp-link:hover{text-decoration:underline}
+.map-sb{width:188px;flex-shrink:0;border-left:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column}
+.map-sb-head{padding:16px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.sb-big-year{font-family:var(--serif);font-size:46px;font-weight:900;color:var(--red);line-height:1}
+.sb-small{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:1px;margin-top:2px}
+.sb-count{font-size:11px;color:var(--gold);margin-top:8px;line-height:1.5;font-weight:600}
+.map-sb-list{flex:1;overflow-y:auto}
+.sb-entry{padding:11px 14px;border-bottom:1px solid rgba(255,255,255,0.05);cursor:pointer;transition:background .15s}
+.sb-entry:hover{background:rgba(201,23,30,0.15)}
+.sb-city{font-family:var(--serif);font-size:12px;font-weight:700;color:rgba(255,255,255,0.85)}
+.sb-person{font-size:10px;color:rgba(255,255,255,0.35);margin-top:1px}
+.sb-amt{font-size:10px;color:var(--red);margin-top:2px;font-weight:600}
+.sb-empty{padding:14px;font-size:11.5px;color:rgba(255,255,255,0.3);line-height:1.8}
+.map-sb-foot{padding:10px 14px;font-size:10px;color:rgba(255,255,255,0.2);line-height:1.7;border-top:1px solid rgba(255,255,255,0.06)}
+
+/* ═══════════════════════════════════════
+   TACTICS — ALTERNATING LAYOUT
+═══════════════════════════════════════ */
+#sec-tactics{background:var(--white);padding:0}
+.tactics-header{padding:80px 60px 48px;max-width:1100px;margin:0 auto}
+.tactics-header .label-sm{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--red);text-transform:uppercase;display:block;margin-bottom:10px}
+.tactics-header h2{font-family:var(--serif);font-size:clamp(26px,3.5vw,38px);font-weight:800;color:var(--ink);line-height:1.2}
+.tactics-header p{font-family:var(--serif);font-size:16px;line-height:1.9;color:var(--ink2);max-width:680px;margin-top:14px}
+
+.tactic-item{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--border);
+  min-height:220px;
+}
+.tactic-item:nth-child(even) .ti-num-side{order:2}
+.tactic-item:nth-child(even) .ti-text-side{order:1}
+.ti-num-side{
+  background:var(--cream);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:40px 32px;gap:8px;border-right:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.tactic-item:nth-child(even) .ti-num-side{border-right:none;border-left:1px solid var(--border)}
+.ti-bg-num{
+  position:absolute;font-family:var(--serif);font-size:200px;font-weight:900;
+  color:rgba(17,16,9,0.04);line-height:1;right:-20px;bottom:-20px;
+  pointer-events:none;user-select:none;
+}
+.ti-step{
+  font-size:10px;font-weight:700;letter-spacing:3px;
+  color:var(--red);text-transform:uppercase;position:relative;z-index:1;
+}
+.ti-step-icon{font-size:36px;position:relative;z-index:1}
+.ti-step-label{
+  font-family:var(--serif);font-size:18px;font-weight:800;
+  color:var(--ink);text-align:center;position:relative;z-index:1;
+  line-height:1.3;max-width:200px;
+}
+.ti-text-side{padding:40px 40px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.ti-desc{font-family:var(--serif);font-size:15px;line-height:1.95;color:var(--ink2)}
+.ti-quote{
+  padding:12px 16px;
+  border-left:3px solid rgba(201,23,30,0.3);
+  background:var(--red-dim);
+  font-family:var(--serif);font-size:13px;line-height:1.75;
+  color:var(--ink2);font-style:italic;
+}
+.tactic-item:hover .ti-num-side{background:var(--red-dim)}
+.tactic-item{transition:none}
+.tactic-item .ti-num-side{transition:background .3s}
+
+/* ═══════════════════════════════════════
+   QUIZ — HIGH CONTRAST IMMERSIVE
+═══════════════════════════════════════ */
+#sec-quiz{background:var(--ink);padding:80px 0;color:#FAFAF8}
+.quiz-inner{max-width:700px;margin:0 auto;padding:0 60px}
+.quiz-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--red);text-transform:uppercase;display:block;margin-bottom:12px}
+.quiz-title{font-family:var(--serif);font-size:clamp(26px,3.5vw,36px);font-weight:800;color:#FAFAF8;margin-bottom:8px;line-height:1.2}
+.quiz-subtitle{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:40px;line-height:1.7}
+.quiz-prog{display:flex;gap:6px;margin-bottom:32px}
+.qp-dot{height:3px;flex:1;background:rgba(255,255,255,0.1);border-radius:2px;transition:background .3s}
+.qp-dot.done{background:var(--red)}
+.qp-dot.active{background:var(--gold)}
+.quiz-q{font-family:var(--serif);font-size:clamp(17px,2.5vw,22px);font-weight:700;color:#FAFAF8;line-height:1.55;margin-bottom:24px}
+.quiz-opts{display:flex;flex-direction:column;gap:8px}
+.quiz-opt{
+  padding:14px 18px;border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.03);cursor:pointer;text-align:left;
+  font-family:var(--serif);font-size:14.5px;color:rgba(255,255,255,0.65);
+  line-height:1.6;transition:all .2s;width:100%;
+}
+.quiz-opt:hover{border-color:rgba(255,255,255,0.35);background:rgba(255,255,255,0.07);color:#FAFAF8}
+.quiz-opt.danger{background:rgba(201,23,30,0.18);border-color:var(--red);color:#FAFAF8}
+.quiz-opt.safe{background:rgba(60,160,60,0.14);border-color:#3DA03D;color:#FAFAF8}
+.quiz-fb{margin-top:16px;padding:14px 18px;font-family:var(--serif);font-size:13.5px;line-height:1.8;display:none}
+.quiz-fb.show{display:block}
+.quiz-fb.danger{background:rgba(201,23,30,0.12);border-left:3px solid var(--red);color:rgba(255,255,255,0.75)}
+.quiz-fb.safe{background:rgba(60,160,60,0.1);border-left:3px solid #3DA03D;color:rgba(255,255,255,0.75)}
+.quiz-actions{margin-top:20px;display:flex;justify-content:flex-end}
+.quiz-next-btn{
+  padding:11px 32px;background:var(--red);color:white;border:none;
+  font-family:var(--sans);font-size:12px;cursor:pointer;letter-spacing:1px;
+  display:none;transition:background .2s;
+}
+.quiz-next-btn:hover{background:var(--red2)}
+.quiz-next-btn.show{display:inline-block}
+.quiz-result{display:none;text-align:center;padding:24px 0}
+.quiz-result.show{display:block}
+.qr-score{font-family:var(--serif);font-size:80px;font-weight:900;line-height:1;margin-bottom:12px}
+.qr-title{font-family:var(--serif);font-size:22px;font-weight:700;color:#FAFAF8;margin-bottom:12px}
+.qr-desc{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.9;max-width:460px;margin:0 auto 28px}
+.qr-restart{
+  border:1px solid rgba(201,23,30,0.5);color:var(--red);background:transparent;
+  padding:9px 24px;font-size:11px;cursor:pointer;letter-spacing:1px;
+  transition:all .2s;font-family:var(--sans);
+}
+.qr-restart:hover{background:var(--red);color:white;border-color:var(--red)}
+
+/* ═══════════════════════════════════════
+   TIPS — NUMBERED EDITORIAL
+═══════════════════════════════════════ */
+#sec-tips{background:var(--cream);padding:0}
+.tips-header{padding:80px 60px 48px;max-width:1100px;margin:0 auto;border-bottom:2px solid var(--ink)}
+.tips-header .label-sm{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--red);text-transform:uppercase;display:block;margin-bottom:10px}
+.tips-header h2{font-family:var(--serif);font-size:clamp(26px,3.5vw,38px);font-weight:800;color:var(--ink)}
+.tips-body{max-width:1100px;margin:0 auto}
+.tip-row{
+  display:grid;grid-template-columns:120px 1fr;
+  border-bottom:1px solid var(--border);
+  transition:background .2s;
+}
+.tip-row:hover{background:rgba(201,23,30,0.03)}
+.tip-num-col{
+  padding:36px 24px;display:flex;align-items:flex-start;
+  justify-content:center;border-right:1px solid var(--border);
+}
+.tip-num{
+  font-family:var(--serif);font-size:52px;font-weight:900;
+  color:rgba(17,16,9,0.1);line-height:1;
+}
+.tip-txt-col{padding:36px 40px}
+.tip-h{font-family:var(--serif);font-size:19px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.3}
+.tip-p{font-family:var(--serif);font-size:15px;line-height:1.95;color:var(--ink2)}
+.tip-p strong{color:var(--red)}
+
+/* ═══════════════════════════════════════
+   RIGHTS — SPLIT LAYOUT
+═══════════════════════════════════════ */
+#sec-rights{background:var(--white);padding:80px 0}
+.rights-inner{max-width:1100px;margin:0 auto;padding:0 60px}
+.rights-header{margin-bottom:48px}
+.rights-header .label-sm{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--red);text-transform:uppercase;display:block;margin-bottom:10px}
+.rights-header h2{font-family:var(--serif);font-size:clamp(26px,3.5vw,38px);font-weight:800;color:var(--ink);line-height:1.2}
+.rights-header p{font-family:var(--serif);font-size:15px;line-height:1.9;color:var(--ink2);max-width:640px;margin-top:12px}
+.hotline-row{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:32px;
+}
+.hotline-card{
+  background:var(--ink);padding:28px 24px;
+  display:flex;flex-direction:column;gap:4px;
+  transition:background .2s;cursor:default;
+}
+.hotline-card:hover{background:#1E1C15}
+.hl-label{font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:1.5px;font-weight:700}
+.hl-num{font-family:var(--serif);font-size:42px;font-weight:900;color:var(--red);line-height:1}
+.hl-desc{font-size:11px;color:rgba(255,255,255,0.3);line-height:1.6;margin-top:4px}
+.rights-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.right-card{
+  padding:24px;border:1px solid var(--border);
+  transition:border-color .2s,box-shadow .2s;
+}
+.right-card:hover{border-color:rgba(201,23,30,0.35);box-shadow:0 0 0 1px rgba(201,23,30,0.1)}
+.rc-icon{font-size:20px;margin-bottom:10px}
+.rc-title{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.rc-body{font-size:13px;line-height:1.9;color:var(--ink2)}
+.rc-body a{color:var(--gold);text-decoration:none}
+.rc-body a:hover{text-decoration:underline}
+.rc-body strong{color:var(--ink)}
+
+/* ═══════════════════════════════════════
+   EPILOGUE
+═══════════════════════════════════════ */
+.epilogue-block{
+  background:var(--ink);padding:80px 60px;
+  position:relative;overflow:hidden;
+}
+.epilogue-block::after{
+  content:'';position:absolute;bottom:0;right:0;
+  width:60%;height:100%;
+  background:linear-gradient(135deg,transparent 30%,rgba(201,23,30,0.05) 100%);
+  pointer-events:none;
+}
+.epilogue-inner{max-width:720px;position:relative;z-index:1}
+.epi-label{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--red);text-transform:uppercase;display:block;margin-bottom:24px}
+.epi-p{font-family:var(--serif);font-size:clamp(16px,2vw,20px);line-height:2;color:rgba(250,250,248,0.65);margin-bottom:20px}
+.epi-p strong{color:#FAFAF8}
+.epi-p:last-child{margin-bottom:0}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer{
+  background:#0A0908;padding:36px 60px;
+}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-note{font-size:11px;color:rgba(255,255,255,0.2);line-height:1.9;margin-bottom:12px}
+.footer-sources{font-size:10px;color:rgba(255,255,255,0.15);line-height:2}
+.footer-brand{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.07);font-family:var(--serif);font-size:11px;color:rgba(255,255,255,0.15);display:flex;justify-content:space-between;align-items:center}
+
+/* ═══════════════════════════════════════
+   CHAPTER NEXT GUIDE
+═══════════════════════════════════════ */
+.chapter-next{
+  display:flex;align-items:center;justify-content:space-between;
+  max-width:1100px;margin:0 auto;padding:20px 60px 32px;
+  border-top:1px solid var(--border);
+}
+.chapter-next.dark{
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding-top:24px;padding-bottom:40px;
+}
+.cn-label{font-size:10px;letter-spacing:2px;color:var(--ink3);font-weight:700}
+.chapter-next.dark .cn-label{color:rgba(255,255,255,0.25)}
+.cn-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--serif);font-size:14px;font-weight:700;
+  color:var(--red);text-decoration:none;
+  transition:gap .2s;
+}
+.cn-link:hover{gap:14px}
+.chapter-next.dark .cn-link{color:rgba(201,23,30,0.8)}
+.chapter-next.dark .cn-link:hover{color:var(--red)}
+
+/* ═══════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-24px);transition:opacity .6s ease,transform .6s ease}
+.reveal-left.in{opacity:1;transform:translateX(0)}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media(max-width:768px){
+  #nav .nav-links{display:none}
+  .cover-body{padding:60px 24px 32px}
+  .cover-stats-bar{grid-template-columns:1fr}
+  .cs-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.06)}
+  .chapter-stripe{grid-template-columns:1fr;padding:48px 24px;gap:24px}
+  .cs-chapter-num{font-size:56px}
+  .body-area{padding:0 24px}
+  .cases-header{padding:40px 24px 24px}
+  .cases-stack{padding:0 24px 48px}
+  .data-inner{padding:0 24px}
+  .metrics-grid{grid-template-columns:1fr 1fr}
+  .map-wrap{flex-direction:column}
+  .map-sb{width:100%;border-left:none;border-top:1px solid rgba(255,255,255,0.08)}
+  .tactic-item{grid-template-columns:1fr}
+  .tactic-item .ti-num-side{
+    border-right:none;border-bottom:1px solid var(--border);
+    min-height:auto;padding:28px 24px;
+    flex-direction:row;justify-content:flex-start;gap:16px;align-items:center;
+  }
+  .tactic-item:nth-child(even) .ti-num-side{
+    order:0;border-left:none;border-bottom:1px solid var(--border);
+    flex-direction:row;justify-content:flex-start;gap:16px;
+  }
+  .tactic-item:nth-child(even) .ti-text-side{order:1}
+  .ti-step-label{text-align:left;max-width:none}
+  .ti-bg-num{display:none}
+  .tactics-header,.tips-header,.rights-inner{padding-left:24px;padding-right:24px}
+  .quiz-inner{padding:0 24px}
+  .hotline-row{grid-template-columns:1fr}
+  .rights-grid{grid-template-columns:1fr}
+  .epilogue-block{padding:48px 24px}
+  footer{padding:28px 24px}
+  .pq-block{padding:40px 24px}
+  .pq-block::before{font-size:160px;top:-20px;left:10px}
+  .chapter-next{padding:16px 24px 24px}
+  .chapter-next.dark{padding:16px 24px 28px}
+}
+@media(max-width:480px){
+  .metrics-grid{grid-template-columns:1fr}
+  .cover-h1{font-size:52px;letter-spacing:-1px}
+  .cover-title-rule{margin:20px 0 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">学费陷阱 · 培训贷调查</div>
+  <ul class="nav-links">
+    <li><a href="#sec-intro">背景</a></li>
+    <li><a href="#sec-cases">案例</a></li>
+    <li><a href="#sec-data">数据</a></li>
+    <li><a href="#sec-tactics">套路</a></li>
+    <li><a href="#sec-quiz">自测</a></li>
+    <li><a href="#sec-tips">识别</a></li>
+    <li><a href="#sec-rights">维权</a></li>
+  </ul>
+</nav>
+<div id="read-bar"></div>
+
+<!-- ══════════════════════════════════════
+     COVER
+══════════════════════════════════════ -->
+<div id="cover">
+  <div class="cover-noise"></div>
+  <div class="cover-grid-lines"></div>
+  <div class="cover-red-slash"></div>
+  <div class="cover-body">
+    <div class="cover-eyebrow">融合新闻 · 应届生求职深度调查 · 2025</div>
+    <h1 class="cover-h1">
+      一份<span class="slash">假</span><br>
+      Offer
+    </h1>
+    <div class="cover-rule"></div>
+    <p class="cover-sub">
+      他们用一套精心设计的面试流程，击穿你的自信，<br>
+      再用一句<em>"培训后直接入职"</em>封住退路——<br>
+      而那份工作，从一开始就不存在。
+    </p>
+  </div>
+  <div class="cover-stats-bar">
+    <div class="cs-item">
+      <div class="cs-num">1222<span class="cs-unit">万</span></div>
+      <div class="cs-label">2025届全国高校毕业生<br>史上规模最大的一届</div>
+    </div>
+    <div class="cs-item">
+      <div class="cs-num">4708<span class="cs-unit">人</span></div>
+      <div class="cs-label">2022—2024年被检察机关<br>起诉的求职诈骗人数</div>
+    </div>
+    <div class="cs-item">
+      <div class="cs-num">2<span class="cs-unit">万+</span></div>
+      <div class="cs-label">单人平均受骗金额（元）<br>部分案例高达三万</div>
+    </div>
+  </div>
+  <div class="cover-scroll-hint">向下滚动</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     壹 · 背景
+══════════════════════════════════════ -->
+<div id="sec-intro">
+  <div class="chapter-stripe reveal">
+    <div class="cs-label-col">
+      <div class="cs-chapter-num">壹</div>
+      <span class="cs-chapter-tag">背景</span>
+    </div>
+    <div class="cs-content-col">
+      <h2 class="cs-title">一场专门针对<br><span>求职焦虑</span>的猎杀</h2>
+      <p class="cs-lead">
+        2025年，全国高校毕业生规模预计达<strong>1222万人</strong>，较上年增加43万，再创历史新高。在"史上最难就业季"年复一年的舆论压力下，应届生的求职焦虑被精准捕捉，成为滋生骗局的温床。
+      </p>
+    </div>
+  </div>
+
+  <div class="pq-block">
+    <div class="pq-inner">
+      <p class="pq-text">"直到培训后期，我才意识到<br>所谓的<em>就业承诺</em>，从来都不真实。"</p>
+      <p class="pq-source">—— 受害者张丽，山东青岛，贷款21800元</p>
+    </div>
+  </div>
+
+  <div style="padding:40px 0 64px">
+    <div class="body-area">
+      <p class="body-p">
+        "培训贷"骗局的运作逻辑并不复杂：<strong>以招聘为诱饵，以"能力不足"为由，以"培训即上岗"为承诺</strong>，诱导求职者办理贷款支付培训费——而那份工作，往往从一开始就不存在。
+      </p>
+      <div class="callout-inset">
+        <p>教育部已将"培训贷"列为应届毕业生求职必防陷阱之首，官方定义为：<strong>以高薪就业为诱饵，承诺培训后包就业，但须借贷支付培训费，个别公司人员甚至手把手教求职者如何使用贷款软件。</strong>2023年第1号预警明确指出该现象"呈上升态势"。</p>
+      </div>
+      <p class="body-p">
+        受害者多为刚毕业或临近毕业的学生，来自大专、本科乃至留学归国群体，求职心切、社会经验不足，在精心设计的"面试流程"中一步步落入陷阱，背上少则数千、多则数万元的债务。
+      </p>
+      <p class="body-p">
+        它并不是依靠某一个明显的破绽，而是通过一连串"看似合理"的步骤，让人在不知不觉中放松警惕。从招聘平台的第一条私信，到贷款完成的那一刻，整个过程可能<strong>只需要半天时间</strong>。
+      </p>
+    </div>
+  </div>
+</div>
+<div class="chapter-next">
+  <span class="cn-label">NEXT</span>
+  <a class="cn-link" href="#sec-cases">贰 · 真实案例：他们的遭遇 →</a>
+</div>
+<hr class="sec-rule thick">
+
+<!-- ══════════════════════════════════════
+     贰 · 真实案例
+══════════════════════════════════════ -->
+<div id="sec-cases">
+  <div class="cases-header reveal">
+    <div>
+      <div class="cs-chapter-num" style="font-size:56px;color:rgba(17,16,9,0.06);line-height:1">贰</div>
+      <h2 style="font-family:var(--serif);font-size:clamp(24px,3.5vw,36px);font-weight:800;color:var(--ink);margin-top:-6px">真实案例：他们的遭遇</h2>
+    </div>
+    <div class="cases-hint">点击展开完整经过 · 所有案例均有公开媒体来源</div>
+  </div>
+
+  <div class="cases-stack">
+
+    <div class="case-row" onclick="toggleCase(this)">
+      <div class="case-idx-col"><span class="case-idx-num">CASE 01</span></div>
+      <div class="case-content-col">
+        <div class="case-top-row">
+          <div class="case-title">小周 & 小石——"游戏测试"背后的贷款陷阱</div>
+          <div class="case-amount">¥29,800</div>
+        </div>
+        <div class="case-tags">
+          <span class="case-tag">📍 湖北 / BOSS直聘</span>
+          <span class="case-tag">🎓 大专应届毕业生</span>
+          <span class="case-tag">📅 2025年</span>
+        </div>
+        <span class="case-toggle-hint">展开详情 ↓</span>
+        <div class="case-body">
+          <p>大专毕业生小石在BOSS直聘上看到"游戏测试专员"招聘，薪资"保底6000元"。经历两轮面试后，被告知"能力暂时不足"，但可通过内部培训弥补——培训结束即直接入职，费用"从工资里扣除"。在对方引导下，小石办理了<strong>29800元、分两年还清</strong>的贷款，款项直接进入培训机构账户。</p>
+          <p>培训内容全是网上可免费获取的视频素材。所谓"入职"，最终只是机构给了一份简历模板，让他自行投递。培训老师甚至教学员<strong>如何在简历上虚构工作经历</strong>。</p>
+          <p>湖北在校生小周经历几乎一致，维权群已有<strong>近百名受害者</strong>。要求退款时，机构以"课程已完成"为由一概拒绝。</p>
+          <div class="case-source">来源：澎湃新闻 / 新浪财经 · <a href="https://cj.sina.com.cn/articles/view/5044281310/12ca99fde02002hops" target="_blank">查看原文 →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-row" onclick="toggleCase(this)">
+      <div class="case-idx-col"><span class="case-idx-num">CASE 02</span></div>
+      <div class="case-content-col">
+        <div class="case-top-row">
+          <div class="case-title">李岩 & 张丽——面试当天，签下贷款协议</div>
+          <div class="case-amount">¥20,800</div>
+        </div>
+        <div class="case-tags">
+          <span class="case-tag">📍 山东·青岛</span>
+          <span class="case-tag">🎓 2024届毕业生</span>
+          <span class="case-tag">📅 2025年12月</span>
+        </div>
+        <span class="case-toggle-hint">展开详情 ↓</span>
+        <div class="case-body">
+          <p>求职屡屡碰壁的李岩接到面试邀约，当天历经两小时"专业评估"，随后被建议参加培训，并在工作人员引导下签署协议、办理<strong>20800元贷款</strong>，款项直接转入机构账户。面试当场，他被安排录制了一段"本人自愿参与培训"的视频声明——这成为日后维权的致命障碍。</p>
+          <p>张丽的遭遇几乎相同，贷款<strong>21800元、分22期偿还</strong>，加息实际须还逾27000元。两人后来发现，他们被同一幕后团伙以不同"壳公司"分别套路。</p>
+          <p>同批受害人王浩则更隐蔽：对方要求他在小程序里绑定银行卡"以便从工资扣款"，操作完成后才发现已在那一刻<strong>被贷款23800元</strong>。律师指出构成误导消费，但协议和视频的存在使维权极为困难。</p>
+          <div class="case-source">来源：重庆日报 / 齐鲁网 · <a href="https://www.cqrb.cn/shishi/2025-12-20/2513398_pc.html" target="_blank">查看原文 →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-row" onclick="toggleCase(this)">
+      <div class="case-idx-col"><span class="case-idx-num">CASE 03</span></div>
+      <div class="case-content-col">
+        <div class="case-top-row">
+          <div class="case-title">小吴——高薪承诺诱导贷款，培训未完机构"人去楼空"</div>
+          <div class="case-amount">¥28,800</div>
+        </div>
+        <div class="case-tags">
+          <span class="case-tag">📍 广东</span>
+          <span class="case-tag">🎓 应届求职者</span>
+          <span class="case-tag">🚨 已被警方立案侦查</span>
+        </div>
+        <span class="case-toggle-hint">展开详情 ↓</span>
+        <div class="case-body">
+          <p>广东求职者小吴通过招聘平台应聘"游戏测试"岗位，被以"能力不足"为由推荐参加培训，并承诺"上班后再还款""保底6000—8000元"。随后，小吴签署贷款协议，贷款<strong>28800元（24期）</strong>，每月须还款1522元，款项直接进入培训机构账户。</p>
+          <p>培训过程中，课程以文档和录播为主，质量低劣，存在明显"注水"。更关键的是，培训尚未结束，机构即因<strong>涉嫌诈骗被警方立案调查</strong>，公司随之"人去楼空"。</p>
+          <p>目前，多名学员贷款已逾期，不仅未获得工作，还面临催收压力。这是本组案例中唯一一起机构被警方以诈骗罪立案侦查的案例，但贷款合同仍对受害者有效，还款义务并未因此免除。</p>
+          <div class="case-source">来源：今日头条 · <a href="https://www.toutiao.com/article/7617006422022275626/?wid=1774081405050" target="_blank">查看原文 →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-row" onclick="toggleCase(this)">
+      <div class="case-idx-col"><span class="case-idx-num">CASE 04</span></div>
+      <div class="case-content-col">
+        <div class="case-top-row">
+          <div class="case-title">小文 & 小兆——消费金融介入，6分钟完成贷款</div>
+          <div class="case-amount">¥16,800</div>
+        </div>
+        <div class="case-tags">
+          <span class="case-tag">📍 北京 / 山西</span>
+          <span class="case-tag">🎓 在校大学生</span>
+          <span class="case-tag">🏦 涉消费金融机构</span>
+        </div>
+        <span class="case-toggle-hint">展开详情 ↓</span>
+        <div class="case-body">
+          <p>在校大学生小文通过BOSS直聘应聘，面试后被HR引导下载消费金融App申请贷款16800元，实际还款金额约19548元，<strong>年化利率超18%</strong>。对方要求他在职业栏填写"网络优化工程师"而非学生，以通过审核。</p>
+          <p>山西学生小兆的经历更极端：从注册App到收到"贷款到账"短信，<strong>全程仅6分钟</strong>。培训结束后机构未兑现任何就业承诺，仅发了一张空白离职证明。</p>
+          <p>金融监管专家指出，消费金融公司向在校大学生发放以"培训"为名的贷款，本身即涉嫌违规，是"校园贷"的变种，平台与机构存在利益共谋关系。</p>
+          <div class="case-source">来源：界面新闻 · <a href="https://www.jiemian.com/article/7170694.html" target="_blank">查看原文 →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-row" onclick="toggleCase(this)">
+      <div class="case-idx-col"><span class="case-idx-num">CASE 05</span></div>
+      <div class="case-content-col">
+        <div class="case-top-row">
+          <div class="case-title">14名大学生集体投诉——"配音师速成"骗局，涉全国31省市</div>
+          <div class="case-amount">逾92万元</div>
+        </div>
+        <div class="case-tags">
+          <span class="case-tag">📍 四川·成都</span>
+          <span class="case-tag">🎓 在校大学生</span>
+          <span class="case-tag">📅 2025年6月</span>
+        </div>
+        <span class="case-toggle-hint">展开详情 ↓</span>
+        <div class="case-body">
+          <p>四川省消委会发布2025年第1号消费警示，14名大学生被"配音师速成""零基础包接单""高薪兼职"广告诱导，办理分期贷款购课后，发现课程低劣，退款申请全部被拒。</p>
+          <p>全国消协智慧315平台数据显示，自2024年4月起，仅此类投诉已涉及<strong>全国31个省市，金额超92万元</strong>，4家涉事公司全部被列入经营异常名录。</p>
+          <div class="case-source">来源：四川经济日报 · <a href="https://www.scjjrb.com/2025/06/25/wap_99438302.html" target="_blank">查看原文 →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-row" onclick="toggleCase(this)">
+      <div class="case-idx-col"><span class="case-idx-num">CASE 06</span></div>
+      <div class="case-content-col">
+        <div class="case-top-row">
+          <div class="case-title">人社部点名通报——青岛、四川两起案例，责令全额退款</div>
+          <div class="case-amount" style="font-size:16px;padding-top:4px;color:var(--ink)">官方执法</div>
+        </div>
+        <div class="case-tags">
+          <span class="case-tag">📍 青岛 / 四川</span>
+          <span class="case-tag">🏛️ 人力资源社会保障部通报</span>
+          <span class="case-tag">📅 2025年12月</span>
+        </div>
+        <span class="case-toggle-hint">展开详情 ↓</span>
+        <div class="case-body">
+          <p>人力资源社会保障部发布违规典型通报：青岛某文化公司以"化妆师助理"岗位招聘，经核查该岗位根本不存在，属地人社部门责令退还全部费用。</p>
+          <p>四川某品牌管理公司以"新媒体运营"岗位诱导求职者参加44天培训，收费19800元，属地人社部门依法立案调查，责令停止培训并<strong>全额退款</strong>。这是迄今最具权威性的行政执法通报，也是求职者维权的重要法律依据。</p>
+          <div class="case-source">来源：人力资源社会保障部官方通报（2025年12月）</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="chapter-next">
+  <span class="cn-label">NEXT</span>
+  <a class="cn-link" href="#sec-data">叁 · 数据：培训贷从未停止蔓延 →</a>
+</div>
+<hr class="sec-rule thick">
+
+<!-- ══════════════════════════════════════
+     叁 · 数据可视化
+══════════════════════════════════════ -->
+<div id="sec-data">
+  <div class="data-inner">
+    <div class="data-section-head reveal">
+      <span class="data-eyebrow">叁 · 数据</span>
+      <h2 class="data-title">培训贷，<span>从未停止蔓延</span></h2>
+      <p class="data-desc">培训贷目前没有独立的逐年统计数字，但规模数据从多个维度揭示其严峻程度。教育部于2023年官方定性其<strong>"呈上升态势"</strong>，国家金融监管总局2024年发出专项风险提示。</p>
+    </div>
+
+    <div class="metrics-grid reveal">
+      <div class="metric-card accent">
+        <div class="metric-num">1222<span class="unit">万</span></div>
+        <div class="metric-label">2025届全国高校毕业生</div>
+        <div class="metric-sub">较2024年增加43万，创历史新高，是培训贷滋生的根本背景</div>
+        <a class="metric-src" href="#" target="_blank">来源：教育部 →</a>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">4708<span class="unit">人</span></div>
+        <div class="metric-label">被检察机关起诉的求职诈骗人数</div>
+        <div class="metric-sub">2022年1月至2024年8月，迄今最权威的官方执法数字</div>
+        <a class="metric-src" href="https://www.spp.gov.cn/spp/zdgz/202410/t20241026_669960.shtml" target="_blank">来源：最高人民检察院 →</a>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">31<span class="unit">省市</span></div>
+        <div class="metric-label">四川一省投诉涉及的全国覆盖范围</div>
+        <div class="metric-sub">仅配音培训贷一类骗局的地域蔓延，实际远超于此</div>
+        <a class="metric-src" href="https://www.scjjrb.com/2025/06/25/wap_99438302.html" target="_blank">来源：四川省消委会 →</a>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">92<span class="unit">万+</span></div>
+        <div class="metric-label">四川一省166起投诉涉及金额</div>
+        <div class="metric-sub">单省单类骗局2024年4月至今涉案金额，实际规模远超于此</div>
+        <a class="metric-src" href="https://www.scjjrb.com/2025/06/25/wap_99438302.html" target="_blank">来源：四川省消委会 →</a>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">68.3<span class="unit">%</span></div>
+        <div class="metric-label">非法借贷受害者中无收入学生占比</div>
+        <div class="metric-sub">无收入、无经验、急于求职，成为精准靶标</div>
+        <a class="metric-src" href="https://cj.sina.com.cn/articles/view/5044281310/12ca99fde02002hops" target="_blank">来源：新浪财经白皮书 →</a>
+      </div>
+      <div class="metric-card accent">
+        <div class="metric-num" style="font-size:24px;line-height:1.3;padding-top:4px">呈上升<br>态势</div>
+        <div class="metric-label">教育部2023年第1号预警官方定性</div>
+        <div class="metric-sub">至今唯一来自教育主管部门的专项预警，定性明确</div>
+        <a class="metric-src" href="#" target="_blank">来源：教育部全国学生资助管理中心 →</a>
+      </div>
+    </div>
+
+    <!-- 时间轴 -->
+    <div class="tl-wrap reveal">
+      <div class="tl-nav" id="tl-nav"></div>
+      <div class="tl-panel" id="tl-panel"></div>
+    </div>
+
+    <!-- 地图 -->
+    <div class="map-wrap reveal">
+      <div class="map-svg-area">
+        <svg id="cmap" viewBox="0 0 580 520" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="pglow">
+              <feGaussianBlur stdDeviation="3" result="cb"/>
+              <feMerge><feMergeNode in="cb"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <rect width="580" height="520" fill="#EFEAD9"/>
+          <path d="M70,60 L120,45 L180,40 L240,50 L290,42 L340,38 L380,45 L420,40 L460,50 L500,58 L520,80 L510,105 L490,130 L495,160 L480,185 L460,200 L455,230 L440,255 L420,270 L410,300 L400,330 L380,355 L360,380 L350,405 L330,420 L305,435 L280,450 L255,440 L230,430 L210,415 L200,390 L185,370 L170,355 L155,335 L145,315 L130,295 L115,275 L100,255 L85,235 L75,215 L65,195 L55,170 L50,145 L55,120 L60,95 Z" fill="#E2DBC8" stroke="#C5BC9E" stroke-width="1.5"/>
+          <ellipse cx="468" cy="355" rx="12" ry="22" fill="#E2DBC8" stroke="#C5BC9E" stroke-width="1" transform="rotate(-15,468,355)"/>
+          <ellipse cx="310" cy="460" rx="22" ry="14" fill="#E2DBC8" stroke="#C5BC9E" stroke-width="1"/>
+          <!-- Province labels -->
+          <text x="170" y="115" font-size="9" fill="#8C8370" font-family="sans-serif">新疆</text>
+          <text x="230" y="175" font-size="9" fill="#8C8370" font-family="sans-serif">西藏</text>
+          <text x="340" y="140" font-size="9" fill="#8C8370" font-family="sans-serif">内蒙古</text>
+          <text x="150" y="220" font-size="9" fill="#8C8370" font-family="sans-serif">青海</text>
+          <text x="215" y="240" font-size="9" fill="#8C8370" font-family="sans-serif">四川</text>
+          <text x="290" y="200" font-size="9" fill="#8C8370" font-family="sans-serif">陕西</text>
+          <text x="350" y="200" font-size="9" fill="#8C8370" font-family="sans-serif">河南</text>
+          <text x="388" y="245" font-size="9" fill="#8C8370" font-family="sans-serif">湖北</text>
+          <text x="395" y="290" font-size="9" fill="#8C8370" font-family="sans-serif">江西</text>
+          <text x="440" y="270" font-size="9" fill="#8C8370" font-family="sans-serif">浙江</text>
+          <text x="435" y="175" font-size="9" fill="#8C8370" font-family="sans-serif">山东</text>
+          <text x="400" y="155" font-size="9" fill="#8C8370" font-family="sans-serif">河北</text>
+          <text x="350" y="275" font-size="9" fill="#8C8370" font-family="sans-serif">湖南</text>
+          <text x="330" y="320" font-size="9" fill="#8C8370" font-family="sans-serif">广西</text>
+          <text x="380" y="320" font-size="9" fill="#8C8370" font-family="sans-serif">广东</text>
+          <text x="150" y="280" font-size="9" fill="#8C8370" font-family="sans-serif">云南</text>
+          <!-- Pins -->
+          <g class="map-pin hidden" data-idx="0" id="mpin0">
+            <circle cx="440" cy="188" r="18" class="pin-ripple" fill="rgba(201,23,30,0.15)"/>
+            <circle cx="440" cy="188" r="6" class="pin-dot" fill="#C9171E" filter="url(#pglow)"/>
+            <circle cx="440" cy="188" r="2.5" fill="white"/>
+            <text x="440" y="174" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="sans-serif" font-weight="bold">济南</text>
+          </g>
+          <g class="map-pin hidden" data-idx="1" id="mpin1">
+            <circle cx="418" cy="250" r="18" class="pin-ripple" fill="rgba(201,23,30,0.15)"/>
+            <circle cx="418" cy="250" r="6" class="pin-dot" fill="#C9171E" filter="url(#pglow)"/>
+            <circle cx="418" cy="250" r="2.5" fill="white"/>
+            <text x="418" y="236" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="sans-serif" font-weight="bold">合肥</text>
+          </g>
+          <g class="map-pin hidden" data-idx="2" id="mpin2">
+            <circle cx="390" cy="358" r="18" class="pin-ripple" fill="rgba(201,23,30,0.15)"/>
+            <circle cx="390" cy="358" r="6" class="pin-dot" fill="#C9171E" filter="url(#pglow)"/>
+            <circle cx="390" cy="358" r="2.5" fill="white"/>
+            <text x="390" y="344" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="sans-serif" font-weight="bold">广州</text>
+          </g>
+          <g class="map-pin hidden" data-idx="3" id="mpin3">
+            <circle cx="418" cy="310" r="18" class="pin-ripple" fill="rgba(201,23,30,0.15)"/>
+            <circle cx="418" cy="310" r="6" class="pin-dot" fill="#C9171E" filter="url(#pglow)"/>
+            <circle cx="418" cy="310" r="2.5" fill="white"/>
+            <text x="418" y="295" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="sans-serif" font-weight="bold">江西</text>
+          </g>
+          <g class="map-pin hidden" data-idx="4" id="mpin4">
+            <circle cx="224" cy="272" r="18" class="pin-ripple" fill="rgba(201,23,30,0.15)"/>
+            <circle cx="224" cy="272" r="6" class="pin-dot" fill="#C9171E" filter="url(#pglow)"/>
+            <circle cx="224" cy="272" r="2.5" fill="white"/>
+            <text x="224" y="258" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="sans-serif" font-weight="bold">成都</text>
+          </g>
+          <g class="map-pin hidden" data-idx="5" id="mpin5">
+            <circle cx="365" cy="265" r="18" class="pin-ripple" fill="rgba(201,23,30,0.15)"/>
+            <circle cx="365" cy="265" r="6" class="pin-dot" fill="#C9171E" filter="url(#pglow)"/>
+            <circle cx="365" cy="265" r="2.5" fill="white"/>
+            <text x="365" y="251" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="sans-serif" font-weight="bold">湖北</text>
+          </g>
+          <g class="map-pin hidden" data-idx="6" id="mpin6">
+            <circle cx="466" cy="198" r="18" class="pin-ripple" fill="rgba(201,23,30,0.15)"/>
+            <circle cx="466" cy="198" r="6" class="pin-dot" fill="#C9171E" filter="url(#pglow)"/>
+            <circle cx="466" cy="198" r="2.5" fill="white"/>
+            <text x="466" y="184" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="sans-serif" font-weight="bold">青岛</text>
+          </g>
+          <g class="map-pin hidden" data-idx="7" id="mpin7">
+            <circle cx="290" cy="208" r="18" class="pin-ripple" fill="rgba(201,23,30,0.15)"/>
+            <circle cx="290" cy="208" r="6" class="pin-dot" fill="#C9171E" filter="url(#pglow)"/>
+            <circle cx="290" cy="208" r="2.5" fill="white"/>
+            <text x="290" y="194" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="sans-serif" font-weight="bold">西安</text>
+          </g>
+          <text x="290" y="508" fill="rgba(255,255,255,0.15)" font-size="8.5" text-anchor="middle" font-family="sans-serif">● 标注城市均有公开媒体报道可查证 · 实际受害地域涉及全国31个省市</text>
+        </svg>
+        <div class="map-popup" id="map-popup">
+          <button class="mpp-close" onclick="closePopup()">×</button>
+          <div class="mpp-tag" id="mpp-tag"></div>
+          <div class="mpp-name" id="mpp-name"></div>
+          <div class="mpp-amt" id="mpp-amt"></div>
+          <div class="mpp-body" id="mpp-body"></div>
+          <a class="mpp-link" id="mpp-link" target="_blank">查看原始报道 →</a>
+        </div>
+      </div>
+      <div class="map-sb">
+        <div class="map-sb-head">
+          <div class="sb-big-year" id="sb-year">2025</div>
+          <div class="sb-small">当前显示年份</div>
+          <div class="sb-count" id="sb-count"></div>
+        </div>
+        <div class="map-sb-list" id="sb-list"></div>
+        <div class="map-sb-foot">点击地图红点或卡片查看案例</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="chapter-next dark" style="background:var(--ink)">
+  <span class="cn-label">NEXT</span>
+  <a class="cn-link" href="#sec-tactics">肆 · 套路解剖：七步连环陷阱 →</a>
+</div>
+<hr class="sec-rule thick" style="border-color:rgba(255,255,255,0.08)">
+
+<!-- ══════════════════════════════════════
+     肆 · 套路解剖
+══════════════════════════════════════ -->
+<div id="sec-tactics">
+  <div class="tactics-header reveal">
+    <span class="label-sm">肆 · 套路解剖</span>
+    <h2>为什么明知有坑，还是有人掉进去？</h2>
+    <p>问题不在于受害者"轻信"，而在于这套骗局被设计成一连串<strong style="color:var(--ink)">看似合理的步骤</strong>，让人逐渐放松警惕。每一步单独看都没问题，连在一起才是陷阱。</p>
+  </div>
+
+  <div class="tactic-item">
+    <div class="ti-num-side">
+      <div class="ti-bg-num">1</div>
+      <span class="ti-step">STEP 01</span>
+      <span class="ti-step-icon">🪝</span>
+      <div class="ti-step-label">精准投放<br>制造诱惑</div>
+    </div>
+    <div class="ti-text-side">
+      <div class="ti-desc">在BOSS直聘、小红书等平台发布薪资高于行业均值20%—50%的虚假岗位，瞄准视频剪辑、配音、电商运营等门槛看似不高的热门方向。招聘信息在正规平台发布、岗位名称真实、薪资合理，构建起第一层信任感。求职者进入的，不是"骗局"，而是一个看起来完全正常的招聘流程。</div>
+      <div class="ti-quote">"年底商家缺人，包月在家办公月薪1.5万" / "零基础速成，保底月入过万"</div>
+    </div>
+  </div>
+
+  <div class="tactic-item">
+    <div class="ti-num-side">
+      <div class="ti-bg-num">2</div>
+      <span class="ti-step">STEP 02</span>
+      <span class="ti-step-icon">🎭</span>
+      <div class="ti-step-label">模拟正规面试<br>降低警惕</div>
+    </div>
+    <div class="ti-text-side">
+      <div class="ti-desc">设计两轮甚至三轮"专业面试"，安排专门的面试官、等待区、录取通知流程，营造公司正规、认真筛选的假象。面试过程中故意肯定求职者的部分能力，再在关键处"挑剔"，为下一步铺垫。整个过程让人觉得"这家公司真的在认真考虑我"。</div>
+      <div class="ti-quote">"你的基础挺好的，但我们这边岗位竞争比较激烈，有几个技能缺口需要补一下……"</div>
+    </div>
+  </div>
+
+  <div class="tactic-item">
+    <div class="ti-num-side">
+      <div class="ti-bg-num">3</div>
+      <span class="ti-step">STEP 03</span>
+      <span class="ti-step-icon">📉</span>
+      <div class="ti-step-label">打压自信<br>制造焦虑</div>
+    </div>
+    <div class="ti-text-side">
+      <div class="ti-desc">专人一对一施压，不直接拒绝，而是采用"温和打压"话术——既不否定你，又暗示"还有机会"。在长时间求职无果的背景下，这种话术极易引发自我怀疑：求职焦虑 + 自我怀疑，成为关键心理突破口。</div>
+      <div class="ti-quote">"你现在这个情况，要是能再系统提升一下，可以拿到好offer的，而且这个机会不等人……"</div>
+    </div>
+  </div>
+
+  <div class="tactic-item">
+    <div class="ti-num-side">
+      <div class="ti-bg-num">4</div>
+      <span class="ti-step">STEP 04</span>
+      <span class="ti-step-icon">💳</span>
+      <div class="ti-step-label">推销培训<br>诱导贷款</div>
+    </div>
+    <div class="ti-text-side">
+      <div class="ti-desc">把"付费培训"包装成"通往工作的必经步骤"，用话术淡化贷款性质：以"费用从工资扣""先学后付""教育分期"替代"贷款"。有时手把手操作贷款App，要求求职者在职业栏填写虚假身份以通过审核。求职者此时面对的，不再是"要不要花钱"，而是"我要不要放弃这个机会"。</div>
+      <div class="ti-quote">"这个不是贷款，是教育分期，每个月才还两三百，学完就赚回来了。"</div>
+    </div>
+  </div>
+
+  <div class="tactic-item">
+    <div class="ti-num-side">
+      <div class="ti-bg-num">5</div>
+      <span class="ti-step">STEP 05</span>
+      <span class="ti-step-icon">🎬</span>
+      <div class="ti-step-label">录制视频<br>封堵退路</div>
+    </div>
+    <div class="ti-text-side">
+      <div class="ti-desc">安排求职者录制"本人自愿参加培训"的声明视频，或签署不透明格式协议，使整个过程在形式上"合法化"。一旦发生纠纷，机构凭借合同和视频将事件定性为普通合同纠纷。整个流程就此进入不可逆阶段。</div>
+      <div class="ti-quote">"来，对着镜头说一下：我是自愿报名参加这个培训的……"</div>
+    </div>
+  </div>
+
+  <div class="tactic-item">
+    <div class="ti-num-side">
+      <div class="ti-bg-num">6</div>
+      <span class="ti-step">STEP 06</span>
+      <span class="ti-step-icon">⏰</span>
+      <div class="ti-step-label">制造时间压力<br>压缩决策空间</div>
+    </div>
+    <div class="ti-text-side">
+      <div class="ti-desc">当天面试、当天签协议、当天完成贷款——整套流程往往在同一天内完成，配合"名额有限""今天不定明天涨价"等催促话术，让求职者在情绪最焦虑、判断最薄弱的时候完成签约。一旦签约完成，沉没成本让退出更加困难。</div>
+      <div class="ti-quote">"就剩最后两个名额了，下午五点前不确认就给别人了。"</div>
+    </div>
+  </div>
+
+  <div class="tactic-item">
+    <div class="ti-num-side">
+      <div class="ti-bg-num">7</div>
+      <span class="ti-step">STEP 07</span>
+      <span class="ti-step-icon">🚪</span>
+      <div class="ti-step-label">承诺落空<br>拒绝退款</div>
+    </div>
+    <div class="ti-text-side">
+      <div class="ti-desc">培训结束后，所谓工作岗位消失，或仅让受害者自行投简历。要求退款时以"课程已完成""合同约定不退"等理由拒绝，情节严重者机构直接注销跑路。受害者此时面对的，是贷款账单、征信压力，和一张协议与视频构成的证据闭环。</div>
+      <div class="ti-quote">"课程已经给你上完了，退款不符合合同约定，这个我们这边没办法处理的。"</div>
+    </div>
+  </div>
+
+</div>
+<div class="chapter-next">
+  <span class="cn-label">NEXT</span>
+  <a class="cn-link" href="#sec-quiz">伍 · 自测：你能识别这些陷阱吗？ →</a>
+</div>
+<hr class="sec-rule thick">
+
+<!-- ══════════════════════════════════════
+     伍 · 互动自测
+══════════════════════════════════════ -->
+<div id="sec-quiz">
+  <div class="quiz-inner">
+    <span class="quiz-eyebrow">伍 · 互动自测</span>
+    <h2 class="quiz-title">你的Offer，安全吗？</h2>
+    <p class="quiz-subtitle">根据真实案例还原的四个求职场景，判断哪些选择会让你陷入危险。</p>
+
+    <div id="quiz-prog-wrap">
+      <div class="quiz-prog" id="quiz-prog"></div>
+    </div>
+    <div id="quiz-main">
+      <div class="quiz-q" id="quiz-q"></div>
+      <div class="quiz-opts" id="quiz-opts"></div>
+      <div class="quiz-fb" id="quiz-fb"></div>
+      <div class="quiz-actions">
+        <button class="quiz-next-btn" id="quiz-next" onclick="nextQ()">下一题 →</button>
+      </div>
+    </div>
+    <div class="quiz-result" id="quiz-result">
+      <div class="qr-score" id="qr-score"></div>
+      <div class="qr-title" id="qr-title"></div>
+      <div class="qr-desc" id="qr-desc"></div>
+      <button class="qr-restart" onclick="initQuiz()">重新测试</button>
+    </div>
+  </div>
+</div>
+<div class="chapter-next dark" style="background:var(--ink)">
+  <span class="cn-label">NEXT</span>
+  <a class="cn-link" href="#sec-tips">陆 · 识别手册：收到Offer前先做这五件事 →</a>
+</div>
+
+<!-- ══════════════════════════════════════
+     陆 · 识别手册
+══════════════════════════════════════ -->
+<div id="sec-tips">
+  <div class="tips-header reveal">
+    <span class="label-sm">陆 · 识别手册</span>
+    <h2>收到Offer前，先做这五件事</h2>
+  </div>
+  <div class="tips-body">
+    <div class="tip-row">
+      <div class="tip-num-col"><div class="tip-num">01</div></div>
+      <div class="tip-txt-col">
+        <div class="tip-h">企查查核实公司主体</div>
+        <div class="tip-p">在企查查或天眼查搜索公司全名，重点查看：<strong>成立时间、注册资本、经营范围、行政处罚记录</strong>。成立不足一年、注册资本极低、经营范围不含招聘岗位的公司，风险极高。</div>
+      </div>
+    </div>
+    <div class="tip-row">
+      <div class="tip-num-col"><div class="tip-num">02</div></div>
+      <div class="tip-txt-col">
+        <div class="tip-h">确认招聘岗位真实存在</div>
+        <div class="tip-p">要求HR提供该岗位在公司官网或官方招聘页的链接。若对方无法提供，或公司根本没有可查验的官方存在，立即警惕。<strong>真实岗位不会凭空消失。</strong></div>
+      </div>
+    </div>
+    <div class="tip-row">
+      <div class="tip-num-col"><div class="tip-num">03</div></div>
+      <div class="tip-txt-col">
+        <div class="tip-h">任何收费要求，立即终止</div>
+        <div class="tip-p">正规企业<strong>不会以任何名义要求求职者在入职前付费</strong>，无论包装成"培训费""服装费""押金""资料费"还是"教育分期"。一旦提出收费，立即终止沟通，不做任何解释。</div>
+      </div>
+    </div>
+    <div class="tip-row">
+      <div class="tip-num-col"><div class="tip-num">04</div></div>
+      <div class="tip-txt-col">
+        <div class="tip-h">拒绝任何形式的贷款引导</div>
+        <div class="tip-p">如果对方引导你下载贷款App、帮你填写申请，或要求在职业栏填写虚假信息，这是<strong>明确的诈骗信号</strong>。无论理由多么合理，一概拒绝，立即离开现场。</div>
+      </div>
+    </div>
+    <div class="tip-row">
+      <div class="tip-num-col"><div class="tip-num">05</div></div>
+      <div class="tip-txt-col">
+        <div class="tip-h">不要在情绪压力下做决定</div>
+        <div class="tip-p">骗局依赖的是你的<strong>焦虑与时间压力</strong>。"名额只剩最后一个""今天不定明天涨价"都是催促你放弃理性判断的话术。任何重要决定，先离开现场，冷静一天，与家人或信任的朋友商量后再决定。</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="chapter-next" style="background:var(--cream)">
+  <span class="cn-label">NEXT</span>
+  <a class="cn-link" href="#sec-rights">柒 · 维权指南：已经遭遇？这样止损 →</a>
+</div>
+
+<!-- ══════════════════════════════════════
+     柒 · 维权指南
+══════════════════════════════════════ -->
+<div id="sec-rights">
+  <div class="rights-inner">
+    <div class="rights-header reveal">
+      <span class="label-sm">柒 · 维权指南</span>
+      <h2>已经遭遇？这样止损</h2>
+      <p>即使再谨慎，也并不是每个人都能避开所有陷阱。当培训贷已经发生，问题不再是"是否上当"，而是还能如何止损。</p>
+    </div>
+    <div class="hotline-row reveal">
+      <div class="hotline-card">
+        <div class="hl-label">劳动权益投诉</div>
+        <div class="hl-num">12333</div>
+        <div class="hl-desc">人力资源和社会保障部全国热线，可投诉违规招聘行为</div>
+      </div>
+      <div class="hotline-card">
+        <div class="hl-label">消费者投诉</div>
+        <div class="hl-num">12315</div>
+        <div class="hl-desc">市场监管投诉举报热线，可投诉虚假宣传和合同欺诈</div>
+      </div>
+      <div class="hotline-card">
+        <div class="hl-label">公安报警</div>
+        <div class="hl-num">110</div>
+        <div class="hl-desc">金额较大、有明确诈骗意图的，建议直接向公安机关报案</div>
+      </div>
+    </div>
+    <div class="rights-grid reveal">
+      <div class="right-card">
+        <div class="rc-icon">📁</div>
+        <div class="rc-title">保留一切证据</div>
+        <div class="rc-body">截图保存所有聊天记录、招聘信息、培训协议、贷款合同、转账凭证。录音记录对方的口头承诺。<strong>不要删除任何沟通记录</strong>，这些往往决定后续维权的空间。</div>
+      </div>
+      <div class="right-card">
+        <div class="rc-icon">🏛️</div>
+        <div class="rc-title">向人社部门投诉</div>
+        <div class="rc-body">向当地<strong>人力资源和社会保障局</strong>投诉，提供公司名称、地址及证据材料。人社部门有权责令退款、立案调查。可通过<a href="http://www.mohrss.gov.cn" target="_blank">人社部官网</a>在线投诉。</div>
+      </div>
+      <div class="right-card">
+        <div class="rc-icon">🏦</div>
+        <div class="rc-title">尽早介入贷款问题</div>
+        <div class="rc-body">联系贷款平台说明情况，协商暂停还款或调整方案。如涉及消费金融违规放贷，可向<strong>国家金融监督管理总局</strong>投诉，网址：<a href="https://www.cbirc.gov.cn" target="_blank">cbirc.gov.cn</a></div>
+      </div>
+      <div class="right-card">
+        <div class="rc-icon">⚖️</div>
+        <div class="rc-title">法律援助</div>
+        <div class="rc-body">各地司法局提供<strong>免费法律援助</strong>，大学生可向所在学校法律援助中心寻求帮助。维权周期较长，但每一次投诉和举报都在推动这一灰色地带被更多人看见。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EPILOGUE -->
+<div class="epilogue-block">
+  <div class="epilogue-inner">
+    <span class="epi-label">尾声</span>
+    <p class="epi-p">"培训贷"之所以反复出现，并不是因为有多少人"轻信"，而是因为它总能精准出现在——<strong>一个人最需要机会的时候。</strong></p>
+    <p class="epi-p">在一场看似普通的面试里，有人拿到的是offer，也有人，背上了第一笔债务。</p>
+    <p class="epi-p">它们的区别，也许只是那一刻——是否有人提醒你多想一秒，或者你是否愿意，多等一晚。<strong>但在现实中，并不是每个人，都来得及做出那个更稳妥的选择。</strong></p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-note">本报道为融合新闻课程调查作业，所有案例均基于公开媒体报道，已如实注明原始来源。报道不构成法律建议，具体维权请咨询专业机构。</div>
+    <div class="footer-sources">参考来源：澎湃新闻 · 重庆日报 · 齐鲁网 · 四川经济日报 · 界面新闻 · 中国青年网 / 法治日报 · 新浪财经 · 人力资源社会保障部 · 最高人民检察院 · 教育部 · 四川省消委会 · 国家金融监督管理总局</div>
+    <div class="footer-brand"><span>深度调查 · 应届生求职陷阱系列</span><span>2025年</span></div>
+  </div>
+</footer>
+
+<script>
+// PROGRESS
+window.addEventListener('scroll',()=>{
+  const d=document.documentElement;
+  document.getElementById('read-bar').style.width=Math.min(d.scrollTop/(d.scrollHeight-d.clientHeight)*100,100)+'%';
+});
+
+// REVEAL
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{threshold:.07});
+document.querySelectorAll('.reveal,.reveal-left').forEach(el=>ro.observe(el));
+
+// CASE TOGGLE
+function toggleCase(el){
+  const open=el.classList.contains('open');
+  document.querySelectorAll('.case-row').forEach(r=>{
+    r.classList.remove('open');
+    const h=r.querySelector('.case-toggle-hint');
+    if(h)h.textContent='展开详情 ↓';
+  });
+  if(!open){
+    el.classList.add('open');
+    const h=el.querySelector('.case-toggle-hint');
+    if(h)h.textContent='收起 ↑';
+  }
+}
+
+// MAP + TIMELINE DATA
+const MC=[
+  {idx:0,year:2021,city:"山东·济南",name:"刘磊",amt:"¥23,800",tag:"山东·济南 · 2021年1月 · 澎湃新闻",body:"应聘游戏建模师被诱导贷款，要求退款遭机构以「违反管理制度」为由反索赔23800元。",link:"https://www.thepaper.cn/newsDetail_forward_10748193"},
+  {idx:1,year:2023,city:"安徽·合肥",name:"周娜（大一在读）",amt:"每月331元×12期",tag:"安徽·合肥 · 2023年8月",body:"被PS技能培训机构诱导填写身份证号和银行卡后直接获批贷款，全程被称为「教育分期」，从未明确告知是贷款。",link:"https://news.youth.cn/sh/202308/t20230801_14687391.htm"},
+  {idx:2,year:2023,city:"广东·广州",name:"林茜（大学生）",amt:"未披露总额",tag:"广东·广州 · 2023年8月",body:"被「边学边赚钱」广告吸引，机构始终称为「教育分期」，每月生活费不足千元仍被套路签约。",link:"https://news.youth.cn/sh/202308/t20230801_14687391.htm"},
+  {idx:3,year:2023,city:"江西",name:"张晓文（大一在读）",amt:"¥5,860",tag:"江西 · 2023年8月",body:"参加线上配音课被诱导分期付款，课程低劣。要求退款被告知须缴2023元违约金，陷入维权困境。",link:"https://news.youth.cn/sh/202308/t20230801_14687391.htm"},
+  {idx:4,year:2025,city:"四川·成都",name:"14名大学生（集体）",amt:"合计逾92万元",tag:"四川·成都 · 2025年6月",body:"被「配音师速成」「零基础包接单」广告诱导贷款购课，4家涉事公司均被列入经营异常名录。",link:"https://www.scjjrb.com/2025/06/25/wap_99438302.html"},
+  {idx:5,year:2025,city:"湖北",name:"小周（在校生）",amt:"¥29,800",tag:"湖北 · 2025年",body:"通过BOSS直聘应聘，被告知能力不足需先培训，贷款29800元直接进入机构账户，维权群已近百人。",link:"https://cj.sina.com.cn/articles/view/5044281310/12ca99fde02002hops"},
+  {idx:6,year:2025,city:"山东·青岛",name:"李岩 & 张丽",amt:"¥20,800 / ¥21,800",tag:"山东·青岛 · 2025年12月",body:"面试当天被不同壳公司套路，录制「自愿培训」视频封堵退路，贷款直接进入机构账户。",link:"https://www.cqrb.cn/shishi/2025-12-20/2513398_pc.html"},
+  {idx:7,year:2025,city:"陕西·西安",name:"王浩",amt:"¥23,800",tag:"陕西·西安 · 2025年12月",body:"转行求职遭遇招转培，被要求绑定银行卡「以便扣款」，操作完成才发现已被贷款划走。",link:"https://www.cqrb.cn/shishi/2025-12-20/2513398_pc.html"}
+];
+const TL={
+  2021:{title:"澎湃新闻首次大规模报道培训贷骗局",desc:"山东济南刘磊案曝光，报道同时指出青岛、成都、海口等多地已出现相同套路。受害人被诱导贷款后，机构不仅拒绝退款，还反以「违反管理制度」为由索赔同等金额。",src:"澎湃新闻 2021年1月",link:"https://www.thepaper.cn/newsDetail_forward_10748193"},
+  2022:{title:"骗局持续蔓延，媒体报道密度相对较低",desc:"受害者多选择沉默而非报案，公开媒体报道相对稀少。数据缺失本身即是问题所在——沉默并不意味着骗局消失，而是意味着骗局更难被看见。",src:"——",link:null},
+  2023:{title:"教育部发布2023年第1号预警，官方定性「呈上升态势」",desc:"教育部全国学生资助管理中心发布专项预警，将培训贷列为应届生求职首要防范陷阱。同年中国青年网/法治日报记者深度采访安徽、广东、江西等地6名受害学生，集中报道。",src:"教育部全国学生资助管理中心 · 中国青年网/法治日报 2023年8月",link:"https://news.youth.cn/sh/202308/t20230801_14687391.htm"},
+  2024:{title:"国家金融监管总局发布专项风险提示",desc:"明确提醒求职者警惕以「培训费」「保证金」等名目诱导贷款的骗局，并要求各金融机构加强对此类贷款用途的审核监管。",src:"国家金融监督管理总局 2024年",link:null},
+  2025:{title:"四川省消委会发2025年第1号消费警示；人社部点名通报",desc:"四川省消委会警示涉及166起投诉、31省市、金额逾92万元。人社部发布违规典型通报，责令青岛、四川两起案例全额退款。年末多地媒体集中报道青岛、西安等地新增案例。",src:"四川经济日报 2025年6月 · 重庆日报/齐鲁网 2025年12月",link:"https://www.cqrb.cn/shishi/2025-12-20/2513398_pc.html"}
+};
+const YEARS=[2021,2022,2023,2024,2025];
+let curY=2025;
+
+function initTL(){
+  const nav=document.getElementById('tl-nav');
+  YEARS.forEach(y=>{
+    const b=document.createElement('button');
+    b.className='tl-btn'+(y===curY?' active':'');
+    const n=MC.filter(c=>c.year===y).length;
+    b.innerHTML=`${y}<small>${n>0?'+'+n+'案例':'无新增'}</small>`;
+    b.onclick=()=>setYear(y);
+    nav.appendChild(b);
+  });
+  renderTL(curY);renderMap(curY);
+}
+function setYear(y){
+  curY=y;
+  document.querySelectorAll('.tl-btn').forEach((b,i)=>b.classList.toggle('active',YEARS[i]===y));
+  renderTL(y);renderMap(y);closePopup();
+}
+function renderTL(y){
+  const ev=TL[y];
+  document.getElementById('tl-panel').innerHTML=`
+    <span class="tl-year-badge">${y}年</span>
+    <div class="tl-event-h">${ev.title}</div>
+    <div class="tl-event-p">${ev.desc}</div>
+    <div class="tl-src">来源：${ev.src}${ev.link?` · <a href="${ev.link}" target="_blank">查看原文 →</a>`:''}
+    </div>`;
+}
+function renderMap(y){
+  const vis=MC.filter(c=>c.year<=y);
+  MC.forEach(c=>{
+    const p=document.getElementById('mpin'+c.idx);
+    if(!p)return;
+    p.classList.toggle('hidden',c.year>y);
+    p.classList.toggle('visible',c.year<=y);
+  });
+  document.getElementById('sb-year').textContent=y;
+  const newY=MC.filter(c=>c.year===y);
+  document.getElementById('sb-count').textContent=`累计 ${vis.length} 个已核实城市`+(newY.length>0?`\n${y}年新增 ${newY.length} 个`:'');
+  const list=document.getElementById('sb-list');list.innerHTML='';
+  const show=newY.length>0?newY:vis.slice(-3);
+  if(!show.length){list.innerHTML=`<div class="sb-empty">${y}年暂无新增已核实案例，但骗局从未停止——受害者的沉默让数据缺席，不代表问题缺席。</div>`;return;}
+  show.forEach(c=>{
+    const d=document.createElement('div');d.className='sb-entry';
+    d.innerHTML=`<div class="sb-city">${c.city}</div><div class="sb-person">${c.name}</div><div class="sb-amt">${c.amt}</div>`;
+    d.onclick=()=>showPopup(c);list.appendChild(d);
+  });
+}
+document.querySelectorAll('.map-pin').forEach(p=>{
+  p.addEventListener('click',function(e){
+    e.stopPropagation();
+    if(this.classList.contains('hidden'))return;
+    const c=MC[parseInt(this.dataset.idx)];
+    if(c)showPopup(c,this);
+  });
+});
+document.getElementById('cmap').addEventListener('click',e=>{if(!e.target.closest('.map-pin'))closePopup();});
+function showPopup(c,pinEl){
+  document.getElementById('mpp-tag').textContent=c.tag;
+  document.getElementById('mpp-name').textContent=c.name;
+  document.getElementById('mpp-amt').textContent=c.amt;
+  document.getElementById('mpp-body').textContent=c.body;
+  document.getElementById('mpp-link').href=c.link||'#';
+  const pop=document.getElementById('map-popup');pop.classList.add('show');
+  if(pinEl){
+    const svg=document.getElementById('cmap');
+    const sr=svg.getBoundingClientRect();
+    const wr=document.querySelector('.map-svg-area').getBoundingClientRect();
+    const cs=pinEl.querySelectorAll('circle');
+    if(cs.length){
+      const cx=parseFloat(cs[1].getAttribute('cx'));
+      const cy=parseFloat(cs[1].getAttribute('cy'));
+      const vb=svg.viewBox.baseVal;
+      let px=(sr.left-wr.left)+cx*(sr.width/vb.width);
+      let py=(sr.top-wr.top)+cy*(sr.height/vb.height);
+      px=Math.max(4,Math.min(wr.width-250,px-120));
+      py=Math.max(4,py-185);
+      pop.style.left=px+'px';pop.style.top=py+'px';
+    }
+  }
+}
+function closePopup(){document.getElementById('map-popup').classList.remove('show')}
+
+// QUIZ
+const QS=[
+  {q:"招聘信息写着「零基础可入职，月薪8000起，培训期有补贴」，你会怎么做？",
+   opts:[{t:"直接投简历，这类机会不多见",d:true},{t:"先在企查查搜这家公司，核实后再决定",d:false},{t:"截图问同学有没有听说过",d:false},{t:"薪资符合期望就直接去面试",d:true}],
+   fb:{d:"⚠️ 风险信号！「零基础+高薪」是培训贷最常见的诱饵组合，务必先核实公司资质。",s:"✅ 正确！核实公司主体是第一步。在企查查检查成立时间、注册资本和经营范围。"}},
+  {q:"面试结束后，HR说「你表现不错，但还差一些技能，可以参加内部培训，培训完直接上岗」，你会？",
+   opts:[{t:"太好了！边学边工作，立刻答应",d:true},{t:"先问清楚：培训是否收费？由谁承担？",d:false},{t:"要求查看培训相关合同条款再考虑",d:false},{t:"觉得公司很负责任，更想去了",d:true}],
+   fb:{d:"⚠️ 这是「能力不足」经典话术！正规公司不会要求求职者在入职前自费培训。",s:"✅ 冷静！询问费用细节是正确的。任何要求你入职前付费的，都是危险信号。"}},
+  {q:"对方说「培训费2万，可以分期，每月只还几百块，培训完工资里直接抵扣」，你会？",
+   opts:[{t:"每月几百还挺合理的，就答应了",d:true},{t:"明确拒绝：任何形式的贷款都不接受",d:false},{t:"要求先签正式劳动合同，再谈培训",d:false},{t:"问能不能便宜一点，砍价后接受",d:true}],
+   fb:{d:"⚠️ 高度危险！「分期还款」就是贷款，钱一旦进入机构账户就与你无关，必须拒绝。",s:"✅ 非常正确！拒绝任何贷款引导，坚持先签劳动合同，这两点能有效阻断骗局。"}},
+  {q:"培训结束，你发现所谓的工作根本不存在，要求退款被拒，你会？",
+   opts:[{t:"觉得自己运气不好，默默还贷款",d:true},{t:"整理所有聊天记录和合同，拨打12333投诉",d:false},{t:"向当地人社局和公安机关同步报案",d:false},{t:"在网上骂一骂，发泄完就算了",d:true}],
+   fb:{d:"⚠️ 不要放弃！保留证据、拨打12333、向人社局和公安报案，都是有效维权途径。",s:"✅ 正确！保留证据是关键，12333和人社局是最直接的维权渠道，金额大的同步报警。"}}
+];
+let qi=0,sc=0,ans=false;
+function initQuiz(){
+  qi=0;sc=0;ans=false;
+  document.getElementById('quiz-result').classList.remove('show');
+  document.getElementById('quiz-main').style.display='block';
+  document.getElementById('quiz-prog-wrap').style.display='block';
+  renderQ();
+}
+function renderQ(){
+  ans=false;
+  const q=QS[qi];
+  document.getElementById('quiz-prog').innerHTML=QS.map((_,i)=>`<div class="qp-dot ${i<qi?'done':i===qi?'active':''}"></div>`).join('');
+  document.getElementById('quiz-q').textContent=`Q${qi+1}. ${q.q}`;
+  document.getElementById('quiz-opts').innerHTML=q.opts.map(o=>`<button class="quiz-opt" onclick="ansQ(this,${o.d})">${o.t}</button>`).join('');
+  document.getElementById('quiz-fb').className='quiz-fb';
+  document.getElementById('quiz-fb').textContent='';
+  document.getElementById('quiz-next').classList.remove('show');
+}
+function ansQ(btn,isDanger){
+  if(ans)return;ans=true;
+  const q=QS[qi];
+  btn.classList.add(isDanger?'danger':'safe');
+  if(!isDanger)sc++;
+  const fb=document.getElementById('quiz-fb');
+  fb.textContent=isDanger?q.fb.d:q.fb.s;
+  fb.className=`quiz-fb show ${isDanger?'danger':'safe'}`;
+  const nb=document.getElementById('quiz-next');
+  nb.classList.add('show');
+  nb.textContent=qi<QS.length-1?'下一题 →':'查看结果 →';
+}
+function nextQ(){
+  qi++;
+  if(qi>=QS.length)showResult();else renderQ();
+}
+function showResult(){
+  document.getElementById('quiz-main').style.display='none';
+  document.getElementById('quiz-prog-wrap').style.display='none';
+  const r=document.getElementById('quiz-result');r.classList.add('show');
+  const pct=Math.round(sc/QS.length*100);
+  const se=document.getElementById('qr-score');
+  se.style.color=pct>=75?'#3DA03D':pct>=50?'#B8973A':'#C9171E';
+  se.textContent=`${sc}/${QS.length}`;
+  const titles={100:'警觉性很高，不容易上当',75:'有一定防范意识，但仍有盲点',50:'有一定防范意识，但仍有盲点',0:'风险较高，请认真阅读识别手册'};
+  const descs={100:'你对培训贷的常见套路有清晰认知，能在关键节点做出正确判断。继续保持这份谨慎，并把这份信息分享给你的同学。',75:'你在部分场景能识别风险，但在情绪压力和"合理"包装面前仍可能犯错。建议再读一遍识别手册，熟记那五个步骤。',50:'你在部分场景能识别风险，但在情绪压力和"合理"包装面前仍可能犯错。建议再读一遍识别手册，熟记那五个步骤。',0:'骗子的话术对你有较强的迷惑性。这不是你的错——他们经过精心设计。现在了解清楚，比被骗后悔要好得多。'};
+  const k=pct>=100?100:pct>=75?75:pct>=50?50:0;
+  document.getElementById('qr-title').textContent=titles[k];
+  document.getElementById('qr-desc').textContent=descs[k];
+}
+
+initTL();initQuiz();
+</script>
+</body>
+</html>
